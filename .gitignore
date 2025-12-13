@@ -1,0 +1,14 @@
+mnist_data/
+
+# datasets
+data/
+datasets/
+tp2/datasets/
+
+# outputs
+tp2/out*
+**/out*
+
+# archives
+*.tar.gz
+*.zip
