@@ -12,3 +12,5 @@ tp2/out*
 # archives
 *.tar.gz
 *.zip
+
+.venv
