@@ -1,0 +1,182 @@
+========================================
+EX 1
+========================================
+size of vocab text: 14806
+size of vocab labels: 2
+
+EXAMPLES 
+Index 0 PAD: <PAD>
+Index 1 UNK: <UNK>
+Index 2: the
+Index 3: a
+
+TEST ON 1 EXAMPLE
+Text: ['yet', 'the', 'act', 'is', 'still', 'charming', 'here']
+Label: positive
+Numericalized text: tensor([189,   2, 674,   7, 129, 348, 143])
+Numericalized label: 0
+
+DATA LOADER
+Texts shape: torch.Size([2, 34])
+Labels shape: torch.Size([2])
+Lengths: tensor([32, 34])
+========================================
+EX 2
+========================================
+Using device: cpu
+
+LOADING DATA
+Vocabulary size: 14806
+Train size: 6920
+Valid size: 1821
+Test size: 872
+
+LOADING EMBEDDING GLOVE
+Loaded 13745/14806 embeddings from file
+
+CREATE MODEL
+
+TRAINING
+Epoch 1: train_loss = 0.6191, valid_loss = 0.6412, valid_accuracy = 66.996, valid_f1 = 57.466
+Epoch 2: train_loss = 0.4766, valid_loss = 0.7798, valid_accuracy = 66.172, valid_f1 = 54.572
+Epoch 3: train_loss = 0.4488, valid_loss = 1.0006, valid_accuracy = 62.493, valid_f1 = 42.653
+Epoch 4: train_loss = 0.4377, valid_loss = 0.7831, valid_accuracy = 67.765, valid_f1 = 60.257
+Epoch 5: train_loss = 0.4325, valid_loss = 0.8521, valid_accuracy = 66.667, valid_f1 = 56.425
+
+EVALUATION ON TEST SET
+Test accuracy = 67.317
+Test F1 = 57.526
+
+Confusion Matrix:
+[[394  50]
+ [235 193]]
+========================================
+EX 3 and 4 (hyperparameters exploration)
+========================================
+
+STARTING HYPERPARAMETER EXPLORATION FOR OPTIMIZATION
+CONFIG NUMBER: 1
+
+>>> Testing Config: {'model_type': 'rnn', 'rnn_type': 'RNN', 'hidden_dim': 150, 'num_layers': 2, 'bidirectional': True, 'dropout': 0.3, 'lr': 0.0001, 'epochs': 5, 'clip': 0.25}
+Epoch 1: train_loss = 0.5942, valid_loss = 0.8116, valid_accuracy = 63.591, valid_f1 = 50.263
+Epoch 2: train_loss = 0.4870, valid_loss = 0.9390, valid_accuracy = 63.262, valid_f1 = 47.612
+Epoch 3: train_loss = 0.4625, valid_loss = 0.9466, valid_accuracy = 63.372, valid_f1 = 45.992
+Epoch 4: train_loss = 0.4452, valid_loss = 0.7637, valid_accuracy = 67.106, valid_f1 = 58.083
+Epoch 5: train_loss = 0.4392, valid_loss = 0.7691, valid_accuracy = 66.557, valid_f1 = 56.593
+ Better config found with accuracy of : 66.56% (Old: -1.00%)
+CONFIG NUMBER: 2
+
+>>> Testing Config: {'model_type': 'rnn', 'rnn_type': 'RNN', 'hidden_dim': 300, 'num_layers': 2, 'bidirectional': True, 'dropout': 0.3, 'lr': 0.0001, 'epochs': 5, 'clip': 0.25}
+Epoch 1: train_loss = 0.5713, valid_loss = 0.6197, valid_accuracy = 68.973, valid_f1 = 62.358
+Epoch 2: train_loss = 0.4863, valid_loss = 0.7562, valid_accuracy = 65.513, valid_f1 = 52.134
+Epoch 3: train_loss = 0.4671, valid_loss = 0.7289, valid_accuracy = 67.710, valid_f1 = 58.881
+Epoch 4: train_loss = 0.4484, valid_loss = 0.8782, valid_accuracy = 65.294, valid_f1 = 50.548
+Epoch 5: train_loss = 0.4337, valid_loss = 0.9036, valid_accuracy = 66.831, valid_f1 = 55.126
+ Better config found with accuracy of : 66.83% (Old: 66.56%)
+CONFIG NUMBER: 3
+
+>>> Testing Config: {'model_type': 'rnn', 'rnn_type': 'RNN', 'hidden_dim': 500, 'num_layers': 2, 'bidirectional': True, 'dropout': 0.3, 'lr': 0.0001, 'epochs': 5, 'clip': 0.25}
+Epoch 1: train_loss = 0.5630, valid_loss = 0.7392, valid_accuracy = 69.577, valid_f1 = 65.069
+Epoch 2: train_loss = 0.4915, valid_loss = 0.6406, valid_accuracy = 66.063, valid_f1 = 63.690
+Epoch 3: train_loss = 0.4708, valid_loss = 0.9634, valid_accuracy = 62.383, valid_f1 = 43.342
+Epoch 4: train_loss = 0.4475, valid_loss = 0.8942, valid_accuracy = 67.051, valid_f1 = 57.865
+Epoch 5: train_loss = 0.4203, valid_loss = 0.9056, valid_accuracy = 66.282, valid_f1 = 54.042
+CONFIG NUMBER: 4
+
+>>> Testing Config: {'model_type': 'rnn', 'rnn_type': 'GRU', 'hidden_dim': 150, 'num_layers': 2, 'bidirectional': True, 'dropout': 0.3, 'lr': 0.0001, 'epochs': 5, 'clip': 0.25}
+Epoch 1: train_loss = 0.5722, valid_loss = 0.7109, valid_accuracy = 68.259, valid_f1 = 57.749
+Epoch 2: train_loss = 0.4671, valid_loss = 0.7686, valid_accuracy = 68.424, valid_f1 = 58.243
+Epoch 3: train_loss = 0.4397, valid_loss = 0.7012, valid_accuracy = 69.357, valid_f1 = 60.593
+Epoch 4: train_loss = 0.4146, valid_loss = 0.6886, valid_accuracy = 70.785, valid_f1 = 64.439
+Epoch 5: train_loss = 0.3960, valid_loss = 0.7371, valid_accuracy = 71.170, valid_f1 = 64.164
+ Better config found with accuracy of : 71.17% (Old: 66.83%)
+CONFIG NUMBER: 5
+
+>>> Testing Config: {'model_type': 'rnn', 'rnn_type': 'GRU', 'hidden_dim': 300, 'num_layers': 2, 'bidirectional': True, 'dropout': 0.3, 'lr': 0.0001, 'epochs': 5, 'clip': 0.25}
+Epoch 1: train_loss = 0.5477, valid_loss = 0.6259, valid_accuracy = 72.268, valid_f1 = 67.773
+Epoch 2: train_loss = 0.4599, valid_loss = 0.6475, valid_accuracy = 72.652, valid_f1 = 70.072
+Epoch 3: train_loss = 0.4373, valid_loss = 0.7434, valid_accuracy = 69.138, valid_f1 = 58.798
+Epoch 4: train_loss = 0.4117, valid_loss = 0.6741, valid_accuracy = 74.190, valid_f1 = 70.698
+Epoch 5: train_loss = 0.3883, valid_loss = 0.9199, valid_accuracy = 71.884, valid_f1 = 65.545
+ Better config found with accuracy of : 71.88% (Old: 71.17%)
+CONFIG NUMBER: 6
+
+>>> Testing Config: {'model_type': 'rnn', 'rnn_type': 'GRU', 'hidden_dim': 500, 'num_layers': 2, 'bidirectional': True, 'dropout': 0.3, 'lr': 0.0001, 'epochs': 5, 'clip': 0.25}
+Epoch 1: train_loss = 0.5365, valid_loss = 0.8208, valid_accuracy = 67.820, valid_f1 = 57.038
+Epoch 2: train_loss = 0.4587, valid_loss = 0.7184, valid_accuracy = 71.115, valid_f1 = 64.651
+Epoch 3: train_loss = 0.4353, valid_loss = 0.7869, valid_accuracy = 73.092, valid_f1 = 67.026
+Epoch 4: train_loss = 0.4081, valid_loss = 0.7837, valid_accuracy = 73.147, valid_f1 = 68.143
+Epoch 5: train_loss = 0.3826, valid_loss = 0.6893, valid_accuracy = 72.048, valid_f1 = 64.331
+ Better config found with accuracy of : 72.05% (Old: 71.88%)
+CONFIG NUMBER: 7
+
+>>> Testing Config: {'model_type': 'rnn', 'rnn_type': 'LSTM', 'hidden_dim': 150, 'num_layers': 2, 'bidirectional': True, 'dropout': 0.3, 'lr': 0.0001, 'epochs': 5, 'clip': 0.25}
+Epoch 1: train_loss = 0.5755, valid_loss = 0.6915, valid_accuracy = 68.699, valid_f1 = 61.796
+Epoch 2: train_loss = 0.4660, valid_loss = 0.8033, valid_accuracy = 69.083, valid_f1 = 59.526
+Epoch 3: train_loss = 0.4347, valid_loss = 0.8633, valid_accuracy = 67.161, valid_f1 = 55.373
+Epoch 4: train_loss = 0.4160, valid_loss = 1.0273, valid_accuracy = 67.435, valid_f1 = 55.845
+Epoch 5: train_loss = 0.3949, valid_loss = 1.2347, valid_accuracy = 68.863, valid_f1 = 59.296
+CONFIG NUMBER: 8
+
+>>> Testing Config: {'model_type': 'rnn', 'rnn_type': 'LSTM', 'hidden_dim': 300, 'num_layers': 2, 'bidirectional': True, 'dropout': 0.3, 'lr': 0.0001, 'epochs': 5, 'clip': 0.25}
+Epoch 1: train_loss = 0.5574, valid_loss = 0.7100, valid_accuracy = 66.282, valid_f1 = 54.315
+Epoch 2: train_loss = 0.4570, valid_loss = 0.9189, valid_accuracy = 66.996, valid_f1 = 56.227
+Epoch 3: train_loss = 0.4338, valid_loss = 0.8605, valid_accuracy = 66.776, valid_f1 = 53.282
+Epoch 4: train_loss = 0.4114, valid_loss = 0.8859, valid_accuracy = 67.710, valid_f1 = 55.251
+Epoch 5: train_loss = 0.3933, valid_loss = 0.8172, valid_accuracy = 70.126, valid_f1 = 61.418
+CONFIG NUMBER: 9
+
+>>> Testing Config: {'model_type': 'rnn', 'rnn_type': 'LSTM', 'hidden_dim': 500, 'num_layers': 2, 'bidirectional': True, 'dropout': 0.3, 'lr': 0.0001, 'epochs': 5, 'clip': 0.25}
+Epoch 1: train_loss = 0.5361, valid_loss = 0.8325, valid_accuracy = 67.381, valid_f1 = 56.452
+Epoch 2: train_loss = 0.4645, valid_loss = 0.7482, valid_accuracy = 65.129, valid_f1 = 48.832
+Epoch 3: train_loss = 0.4401, valid_loss = 0.6508, valid_accuracy = 69.962, valid_f1 = 63.942
+Epoch 4: train_loss = 0.4184, valid_loss = 0.6588, valid_accuracy = 72.378, valid_f1 = 69.534
+Epoch 5: train_loss = 0.3921, valid_loss = 0.8305, valid_accuracy = 68.369, valid_f1 = 58.140
+
+RESULTS
+
+=== TESTING BEST CONFIG WITH 5 SEEDS 
+
+>>> Testing Config: {'model_type': 'rnn', 'rnn_type': 'GRU', 'hidden_dim': 500, 'num_layers': 2, 'bidirectional': True, 'dropout': 0.3, 'lr': 0.0001, 'epochs': 5, 'clip': 0.25}
+Epoch 1: train_loss = 0.5407, valid_loss = 0.6548, valid_accuracy = 70.675, valid_f1 = 67.199
+Epoch 2: train_loss = 0.4617, valid_loss = 0.7052, valid_accuracy = 71.005, valid_f1 = 66.284
+Epoch 3: train_loss = 0.4317, valid_loss = 0.7246, valid_accuracy = 71.719, valid_f1 = 66.710
+Epoch 4: train_loss = 0.4081, valid_loss = 0.8312, valid_accuracy = 71.993, valid_f1 = 66.045
+Epoch 5: train_loss = 0.3846, valid_loss = 0.9221, valid_accuracy = 70.840, valid_f1 = 62.632
+
+>>> Testing Config: {'model_type': 'rnn', 'rnn_type': 'GRU', 'hidden_dim': 500, 'num_layers': 2, 'bidirectional': True, 'dropout': 0.3, 'lr': 0.0001, 'epochs': 5, 'clip': 0.25}
+Epoch 1: train_loss = 0.5414, valid_loss = 0.8794, valid_accuracy = 68.753, valid_f1 = 59.731
+Epoch 2: train_loss = 0.4597, valid_loss = 1.0264, valid_accuracy = 66.337, valid_f1 = 52.591
+Epoch 3: train_loss = 0.4291, valid_loss = 0.7163, valid_accuracy = 70.346, valid_f1 = 62.291
+Epoch 4: train_loss = 0.4033, valid_loss = 0.8406, valid_accuracy = 72.488, valid_f1 = 68.028
+Epoch 5: train_loss = 0.3764, valid_loss = 0.8778, valid_accuracy = 72.048, valid_f1 = 65.256
+
+>>> Testing Config: {'model_type': 'rnn', 'rnn_type': 'GRU', 'hidden_dim': 500, 'num_layers': 2, 'bidirectional': True, 'dropout': 0.3, 'lr': 0.0001, 'epochs': 5, 'clip': 0.25}
+Epoch 1: train_loss = 0.5410, valid_loss = 0.7268, valid_accuracy = 70.401, valid_f1 = 63.606
+Epoch 2: train_loss = 0.4637, valid_loss = 1.1368, valid_accuracy = 65.019, valid_f1 = 49.485
+Epoch 3: train_loss = 0.4357, valid_loss = 0.9346, valid_accuracy = 67.765, valid_f1 = 57.371
+Epoch 4: train_loss = 0.3986, valid_loss = 0.7910, valid_accuracy = 70.126, valid_f1 = 62.637
+Epoch 5: train_loss = 0.3785, valid_loss = 1.0231, valid_accuracy = 70.511, valid_f1 = 61.670
+
+>>> Testing Config: {'model_type': 'rnn', 'rnn_type': 'GRU', 'hidden_dim': 500, 'num_layers': 2, 'bidirectional': True, 'dropout': 0.3, 'lr': 0.0001, 'epochs': 5, 'clip': 0.25}
+Epoch 1: train_loss = 0.5333, valid_loss = 1.0345, valid_accuracy = 62.987, valid_f1 = 43.927
+Epoch 2: train_loss = 0.4631, valid_loss = 0.8193, valid_accuracy = 70.346, valid_f1 = 63.315
+Epoch 3: train_loss = 0.4350, valid_loss = 0.8744, valid_accuracy = 67.765, valid_f1 = 56.743
+Epoch 4: train_loss = 0.4045, valid_loss = 0.8693, valid_accuracy = 68.479, valid_f1 = 56.712
+Epoch 5: train_loss = 0.3844, valid_loss = 0.8789, valid_accuracy = 70.566, valid_f1 = 61.823
+
+>>> Testing Config: {'model_type': 'rnn', 'rnn_type': 'GRU', 'hidden_dim': 500, 'num_layers': 2, 'bidirectional': True, 'dropout': 0.3, 'lr': 0.0001, 'epochs': 5, 'clip': 0.25}
+Epoch 1: train_loss = 0.5418, valid_loss = 0.6233, valid_accuracy = 71.774, valid_f1 = 66.839
+Epoch 2: train_loss = 0.4626, valid_loss = 0.6636, valid_accuracy = 73.366, valid_f1 = 70.373
+Epoch 3: train_loss = 0.4299, valid_loss = 0.6753, valid_accuracy = 72.158, valid_f1 = 66.928
+Epoch 4: train_loss = 0.4018, valid_loss = 0.9206, valid_accuracy = 70.071, valid_f1 = 62.284
+Epoch 5: train_loss = 0.3751, valid_loss = 0.6997, valid_accuracy = 75.288, valid_f1 = 72.153
+
+Final Statistics for Best Model: Mean = 71.85%, Std = 1.81%
+                                                                                                                                                                    
+                                                                                                                                                                                                             
+                                                                                                                                                                                                             
+                                                                                                                                                                                                             
+                                                                                                                                                                                                             
+                                                                                                                                                                                                             
+                                
